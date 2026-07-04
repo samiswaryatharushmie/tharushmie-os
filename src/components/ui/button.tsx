@@ -2,21 +2,40 @@ import { cn } from "@/lib/utils";
 
 type ButtonProps = {
   children: React.ReactNode;
-  className?: string;
+  variant?: "primary" | "secondary";
 };
 
 export default function Button({
   children,
-  className,
+  variant = "primary",
 }: ButtonProps) {
   return (
     <button
-      className={cn(
-        "rounded-xl px-6 py-3 font-medium transition-all duration-300",
-        "bg-violet-600 hover:bg-violet-500",
-        "hover:scale-105 active:scale-95",
-        className
-      )}
+      className={
+        variant === "primary"
+          ? `
+            rounded-xl
+            bg-violet-600
+            px-7
+            py-4
+            font-semibold
+            transition-all
+            duration-300
+            hover:bg-violet-500
+          `
+          : `
+            rounded-xl
+            border
+            border-violet-500/30
+            bg-transparent
+            px-7
+            py-4
+            font-semibold
+            transition-all
+            duration-300
+            hover:bg-violet-500/10
+          `
+      }
     >
       {children}
     </button>

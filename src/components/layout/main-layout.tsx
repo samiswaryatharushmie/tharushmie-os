@@ -1,20 +1,31 @@
+import { ReactNode } from "react";
 import Sidebar from "./sidebar";
+import Topbar from "./topbar";
+import PageContainer from "@/components/ui/page-container";
 
-type Props = {
-  children: React.ReactNode;
+type MainLayoutProps = {
+  children: ReactNode;
 };
 
 export default function MainLayout({
   children,
-}: Props) {
+}: MainLayoutProps) {
   return (
-    <div className="flex min-h-screen bg-[#09090B]">
+    <div className="flex min-h-screen bg-[#09090B] text-white">
 
       <Sidebar />
 
-      <main className="flex-1 p-10">
-        {children}
-      </main>
+      <div className="flex flex-1 flex-col">
+
+        <Topbar />
+
+        <main className="flex-1 overflow-y-auto py-10">
+        <PageContainer>
+            {children}
+        </PageContainer>
+        </main>
+
+      </div>
 
     </div>
   );
